@@ -2,8 +2,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const Database = require('./configuration/DatabaseConfiguration');
-const fs = require('fs');
 // const Database;
 //Block End Dependencies
 
@@ -34,26 +32,7 @@ app.all('*', (req, res, next) => {
 
 //Start Block Accessing The Routes in the Entry Point
 
-// const _QuestionaireManagementRoute = require('./routes/QuestionnaireManagementRoute');
-// const _AdminManagementRoutes = require('./routes/AdminManagementRoute');
-// const _UserManagementRoutes = require('./routes/UserManagementRoute');
-// const _ExamSubscriptionPlanManagementRoute = require('./routes/ExamSubscriptionPlanManagementRoute');
-// const _PasswordManagementRoute = require('./routes/PasswordManagementRoute');
-// const _StripeManagementRoute = require('./routes/StripeManagementRoute');
-// const _OrderManagementRoute = require('./routes/OrderManagementRoute');
-// const _UserQuestionnaireContainerRoute = require('./routes/UserQuestionnaireContainerRoute');
-// const _QuestionAnswerManagementRoute = require('./routes/QuestionAnswersManagementRoute');
-
 //*****UsingRoutes*****//
-// app.use('/QuestionaireManagement',_QuestionaireManagementRoute);
-// app.use('/AdminManagement',_AdminManagementRoutes);
-// app.use('/UserManagement',_UserManagementRoutes);
-// app.use('/ExamSubscriptionPlanManagement',_ExamSubscriptionPlanManagementRoute);
-// app.use('/PasswordManagement',_PasswordManagementRoute)
-// app.use('/StripeManagement',_StripeManagementRoute);
-// app.use('/OrderManagement',_OrderManagementRoute);
-// app.use('/UserQuestionnaireContainerManagement',_UserQuestionnaireContainerRoute);
-// app.use('/QuestionAnswerManagement',_QuestionAnswerManagementRoute);
 app.use(express.static(path.join(__dirname,'/frontend-lms')));
 //*****UsingRoutes*****//
 
@@ -88,10 +67,6 @@ app.use((error, req, res, next) => {
 //Start Block For Listening Your App On Defined Port
 app.listen(PORT, () => {
     console.log(`Server is Listening/Running on Port ${PORT}`);
-    // fs.readFile('./file',"utf8",(error,data) => {
-    //     console.log(error);
-    //     console.log(data);
-    // })
 })
 
 
