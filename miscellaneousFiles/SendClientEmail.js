@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const SendEmailUsingNodeMailer = async (_Email, _Link, _CredentialsObject) => {
+const senEmail = async (payLoad) => {
   try {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
@@ -8,25 +8,23 @@ const SendEmailUsingNodeMailer = async (_Email, _Link, _CredentialsObject) => {
     const _SmtpService = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'itismyworkspace@gmail.com', // generated ethereal user
-        pass: 'mitlndcbonnoffev', // generated ethereal password
+        user: 'hello@sweetumbrella.co.uk', // generated ethereal user
+        pass: process.env.APPPASSWORDFOREMAIL, // generated ethereal password
       },
     });
     //Email Object
-
+    payLoad
     const _EmailObject = {
-      from: 'itismyworkspace@gmail.com', // sender address
-      to: _Email, // list of receivers
-      subject: "Skillstitute", // Subject linea
+      from: payLoad.emailAddress, // sender address
+      to: 'hello@sweetumbrella.co.uk', // list of receivers
+      subject: payLoad.subject, // Subject linea
       html: `<b>
-      <h3>UserId: ${_CredentialsObject.UserId}</h3>
-      <h3>UserId: ${_CredentialsObject.Token}</h3>
+      <h3>UserEmail: ${payLoad.emailAddress}</h3>
+      <h3>UserMessage: ${payLoad.message}</h3>
       <br>
       <br>
       <br>
       <h5>Note: This is One Time Link and will Expire in 5 minute You cannot Use it Once it Expired</h5>
-      <a href="${_Link}">Click Me</a>
-  
       </b>`, // html body
     };
 
@@ -34,8 +32,8 @@ const SendEmailUsingNodeMailer = async (_Email, _Link, _CredentialsObject) => {
 
     const _SendEmail = await _SmtpService.sendMail(_EmailObject);
     return {
-      Message: `Important Information Has Sent Successfully from ${_SendEmail.envelope.from} To ${_SendEmail.envelope.to} Please Check Your Email!`,
-      Data: _SendEmail.messageId,
+      Message: `Email has sent successfuly one of our team member will contact you shortly`,
+      Data: true,
       Result: _SendEmail.response,
     };
   } catch (error) {
@@ -49,4 +47,4 @@ const SendEmailUsingNodeMailer = async (_Email, _Link, _CredentialsObject) => {
 
 }
 
-module.exports = { SendEmailUsingNodeMailer };
+module.exports = { senEmail };

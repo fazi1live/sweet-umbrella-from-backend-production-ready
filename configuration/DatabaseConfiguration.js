@@ -1,8 +1,8 @@
 const Package = require('../package.json');
 const mongoose = require('mongoose');
 
-const DatabaseName = 'LMSUpworkProject';
-mongoose.connect("mongodb+srv://lms1:lms1@clusterlms.1xyuk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, (error,connection) => {
+const DatabaseName = 'DataBase';
+mongoose.connect("URI", { useNewUrlParser: true, useUnifiedTopology: true }, (error,connection) => {
     if (!error) {
         console.log(`\nMogoDb Connected Successfuly at MongoAtlas with Database Name ${DatabaseName}\n`);
         console.log("Your App Has the Following Dependicies\n");
