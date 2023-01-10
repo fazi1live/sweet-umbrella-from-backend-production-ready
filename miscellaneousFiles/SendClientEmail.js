@@ -9,7 +9,7 @@ const senEmail = async (payLoad) => {
       service: 'gmail',
       auth: {
         user: 'hello@sweetumbrella.co.uk', // generated ethereal user
-        pass: process.env.APPPASSWORDFOREMAIL, // generated ethereal password
+        pass: 'rtiuuebseaxxkmid', // generated ethereal password
       },
     });
     //Email Object
